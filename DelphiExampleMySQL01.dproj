@@ -6,10 +6,10 @@
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
-        <ProjectName Condition="'$(ProjectName)'==''">ExemploMySQL01</ProjectName>
+        <ProjectName Condition="'$(ProjectName)'==''">DelphiExampleMySQL01</ProjectName>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
-        <MainSource>ExemploMySQL01.dpr</MainSource>
+        <MainSource>DelphiExampleMySQL01.dpr</MainSource>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -70,7 +70,7 @@
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
-        <SanitizedProjectName>ExemploMySQL01</SanitizedProjectName>
+        <SanitizedProjectName>DelphiExampleMySQL01</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>vclwinx;fmx;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;FireDACCommonODBC;FireDACCommonDriver;appanalytics;IndyProtocols;vclx;Skia.Package.RTL;IndyIPClient;dbxcds;vcledge;bindcompvclwinx;FmxTeeUI;bindcompfmx;inetdb;ibmonitor;FireDACSqliteDriver;DbxClientDriver;Tee;soapmidas;vclactnband;TeeUI;fmxFireDAC;dbexpress;DBXMySQLDriver;VclSmp;inet;vcltouch;fmxase;dbrtl;Skia.Package.FMX;fmxdae;TeeDB;FireDACMSAccDriver;CustomIPTransport;vcldsnap;DBXInterBaseDriver;IndySystem;Skia.Package.VCL;vcldb;ibxbindings;vclFireDAC;bindcomp;FireDACCommon;IndyCore;RESTBackendComponents;bindcompdbx;rtl;FireDACMySQLDriver;FireDACADSDriver;RESTComponents;DBXSqliteDriver;vcl;IndyIPServer;dsnapxml;dsnapcon;adortl;vclimg;FireDACPgDriver;FireDAC;inetdbxpress;xmlrtl;tethering;ibxpress;bindcompvcl;dsnap;CloudService;vclib;fmxobj;bindcompvclsmp;FMXTee;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
@@ -105,7 +105,7 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_DcuOutput>.\build\DCU</DCC_DcuOutput>
+        <DCC_DcuOutput>.\Build\DCU</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -126,30 +126,29 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="DAO\_ClienteDAO.pas"/>
-        <DCCReference Include="Principal\_Ambiente.pas"/>
-        <DCCReference Include="Principal\_Biblioteca.pas"/>
-        <DCCReference Include="ConexaoBD\_TypesBD.pas"/>
-        <DCCReference Include="Telas\ancestrais\FrmAncestral.pas">
-            <Form>FormAncestral</Form>
+        <DCCReference Include="DAO\_CustomerDAO.pas"/>
+        <DCCReference Include="Main\_App.pas"/>
+        <DCCReference Include="Main\_Library.pas"/>
+        <DCCReference Include="ViewForms\Ancestral\RegistrationForm.pas">
+            <Form>FRegistration</Form>
+        </DCCReference>
+        <DCCReference Include="MainForm.pas">
+            <Form>FMain</Form>
+        </DCCReference>
+        <DCCReference Include="ViewForms\Registration\CustomersForm.pas">
+            <Form>FCustomers</Form>
+        </DCCReference>
+        <DCCReference Include="DB\_DBMySQLConnection.pas"/>
+        <DCCReference Include="DB\_DBQuery.pas"/>
+        <DCCReference Include="DB\_DBTypes.pas"/>
+        <DCCReference Include="DB\_IDBConnection.pas"/>
+        <DCCReference Include="DB\_IDBQuery.pas"/>
+        <DCCReference Include="ViewForms\Ancestral\AncestralForm.pas">
+            <Form>FAncestral</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Telas\ancestrais\FrmCadastro.pas">
-            <Form>FormCadastro</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Telas\cadastros\FrmClientes.pas">
-            <Form>FormClientes</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="FrmPrincipal.pas">
-            <Form>FormPrincipal</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ConexaoBD\_MySQLConnectionBD.pas"/>
-        <DCCReference Include="ConexaoBD\_QueryBD.pas"/>
-        <DCCReference Include="ConexaoBD\_IQueryBD.pas"/>
-        <DCCReference Include="ConexaoBD\_IConexaoBD.pas"/>
+        <DCCReference Include="Main\_Language.pas"/>
+        <DCCReference Include="Main\_Environment.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -168,7 +167,7 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">ExemploMySQL01.dpr</Source>
+                    <Source Name="MainSource">DelphiExampleMySQL01.dpr</Source>
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
@@ -176,9 +175,9 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
-                <DeployFile LocalName="build\ExemploMySQL01.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="build\DelphiExampleMySQL01.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>ExemploMySQL01.exe</RemoteName>
+                        <RemoteName>DelphiExampleMySQL01.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

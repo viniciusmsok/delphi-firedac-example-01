@@ -1,14 +1,13 @@
-inherited FormCadastro: TFormCadastro
-  Caption = 'FormCadastro'
+inherited FRegistration: TFRegistration
+  Caption = 'FRegistration'
   ClientHeight = 412
   ClientWidth = 631
   StyleElements = [seFont, seClient, seBorder]
   OnCloseQuery = FormCloseQuery
-  OnCreate = FormCreate
   ExplicitWidth = 647
   ExplicitHeight = 451
   TextHeight = 15
-  object pnTopo: TPanel
+  object pnTop: TPanel
     Left = 0
     Top = 0
     Width = 631
@@ -16,56 +15,56 @@ inherited FormCadastro: TFormCadastro
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 764
-    object btSalvar: TBitBtn
+    object btSave: TBitBtn
       AlignWithMargins = True
       Left = 3
       Top = 3
       Width = 120
       Height = 43
       Align = alLeft
-      Caption = '&Salvar'
+      Caption = '&Save'
       Enabled = False
       TabOrder = 0
       TabStop = False
-      OnClick = btSalvarClick
+      OnClick = btSaveClick
     end
-    object btCancelar: TBitBtn
+    object btCancel: TBitBtn
       AlignWithMargins = True
       Left = 129
       Top = 3
       Width = 120
       Height = 43
       Align = alLeft
-      Caption = '&Cancelar'
+      Caption = '&Cancel'
       Enabled = False
       TabOrder = 1
       TabStop = False
-      OnClick = btCancelarClick
+      OnClick = btCancelClick
     end
-    object btExcluir: TBitBtn
+    object btDelete: TBitBtn
       AlignWithMargins = True
       Left = 255
       Top = 3
       Width = 120
       Height = 43
       Align = alLeft
-      Caption = '&Excluir'
+      Caption = '&Delete'
       Enabled = False
       TabOrder = 2
       TabStop = False
-      OnClick = btExcluirClick
+      OnClick = btDeleteClick
     end
-    object btPesquisar: TBitBtn
+    object btSearch: TBitBtn
       AlignWithMargins = True
       Left = 381
       Top = 3
       Width = 120
       Height = 43
       Align = alLeft
-      Caption = '&Pesquisar'
+      Caption = 'S&earch'
       TabOrder = 3
       TabStop = False
+      OnClick = btSearchClick
     end
     object btLogs: TBitBtn
       AlignWithMargins = True
@@ -78,6 +77,7 @@ inherited FormCadastro: TFormCadastro
       Enabled = False
       TabOrder = 4
       TabStop = False
+      OnClick = btLogsClick
     end
   end
 end

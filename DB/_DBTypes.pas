@@ -1,4 +1,4 @@
-unit _TypesBD;
+unit _DBTypes;
 
 interface
 

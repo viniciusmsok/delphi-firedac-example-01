@@ -1,55 +1,55 @@
-inherited FormClientes: TFormClientes
-  Caption = 'Clientes'
-  ClientHeight = 210
+inherited FCustomers: TFCustomers
+  Caption = 'Customers'
+  ClientHeight = 208
   ClientWidth = 629
   StyleElements = [seFont, seClient, seBorder]
   OnClose = FormClose
   ExplicitWidth = 645
-  ExplicitHeight = 249
+  ExplicitHeight = 247
   TextHeight = 15
-  object Label1: TLabel [0]
+  object lbID: TLabel [0]
     Left = 0
     Top = 63
     Width = 11
     Height = 15
     Caption = 'ID'
   end
-  object lbNomeOficial: TLabel [1]
+  object lbOficialName: TLabel [1]
     Left = 0
     Top = 119
-    Width = 108
+    Width = 32
     Height = 15
-    Caption = 'Nome (registro civil)'
+    Caption = 'Name'
   end
-  object lbRegistroReceita: TLabel [2]
+  object lbFederalID: TLabel [2]
     Left = 0
     Top = 165
     Width = 21
     Height = 15
     Caption = 'CPF'
   end
-  object Label4: TLabel [3]
+  object lbPersonType: TLabel [3]
     Left = 129
     Top = 61
-    Width = 78
+    Width = 62
     Height = 15
-    Caption = 'Tipo de pessoa'
+    Caption = 'Person type'
   end
-  object lbNomeSecundario: TLabel [4]
+  object lbSocialName: TLabel [4]
     Left = 316
     Top = 119
-    Width = 66
+    Width = 64
     Height = 15
-    Caption = 'Nome social'
+    Caption = 'Social name'
   end
-  object Label2: TLabel [5]
+  object lbEmail: TLabel [5]
     Left = 169
     Top = 165
     Width = 34
     Height = 15
     Caption = 'E-mail'
   end
-  inherited pnTopo: TPanel
+  inherited pnTop: TPanel
     Width = 629
     TabOrder = 5
     StyleElements = [seFont, seClient, seBorder]
@@ -68,7 +68,7 @@ inherited FormClientes: TFormClientes
     TabOrder = 0
     OnKeyDown = nIDKeyDown
   end
-  object eNomeOficial: TEdit
+  object eOficialName: TEdit
     Left = 0
     Top = 137
     Width = 309
@@ -76,10 +76,10 @@ inherited FormClientes: TFormClientes
     CharCase = ecUpperCase
     Enabled = False
     TabOrder = 2
-    OnExit = eNomeOficialExit
+    OnExit = eOficialNameExit
     OnKeyDown = OnEnterNext
   end
-  object cbTipoPessoa: TComboBox
+  object cbPersonType: TComboBox
     Left = 129
     Top = 81
     Width = 145
@@ -87,10 +87,10 @@ inherited FormClientes: TFormClientes
     Style = csDropDownList
     Enabled = False
     TabOrder = 1
-    OnChange = cbTipoPessoaChange
+    OnChange = cbPersonTypeChange
     OnKeyDown = OnEnterNext
   end
-  object eRegistroReceita: TMaskEdit
+  object eFederalID: TMaskEdit
     Left = 0
     Top = 183
     Width = 163
@@ -100,7 +100,7 @@ inherited FormClientes: TFormClientes
     Text = ''
     OnKeyDown = OnEnterNext
   end
-  object eNomeSecundario: TEdit
+  object eSocialName: TEdit
     Left = 316
     Top = 137
     Width = 309
@@ -118,7 +118,7 @@ inherited FormClientes: TFormClientes
     CharCase = ecLowerCase
     Enabled = False
     TabOrder = 6
-    OnExit = eNomeOficialExit
+    OnExit = eOficialNameExit
     OnKeyDown = OnEnterNext
   end
 end

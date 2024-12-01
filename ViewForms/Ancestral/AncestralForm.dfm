@@ -1,4 +1,4 @@
-object FormAncestral: TFormAncestral
+object FAncestral: TFAncestral
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
@@ -15,5 +15,7 @@ object FormAncestral: TFormAncestral
   FormStyle = fsMDIChild
   Position = poMainFormCenter
   Visible = True
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   TextHeight = 15
 end
