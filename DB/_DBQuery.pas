@@ -20,6 +20,7 @@ type
     function GetSQL: TStrings;
     function GetDataSet: TDataSet;
 
+    procedure SetValue(fieldName: string; value: Variant);
     function AsDateTime(fieldName: string): TDateTime;
     function AsFloat(fieldName: string): Double;
     function AsInteger(fieldName: string): Integer;
@@ -27,8 +28,9 @@ type
     function AsVariant(fieldName: string): Variant;
 
     function Query: Boolean; overload;
-    function Query(params: array of Variant): Boolean; overload;
-    function Execute(params: array of Variant): Integer;
+    function Query(params: TArray<Variant>): Boolean; overload;
+    function Execute: Integer; overload;
+    function Execute(params: TArray<Variant>): Integer; overload;
     procedure Close;
 
     function Bof: Boolean;
@@ -82,7 +84,7 @@ begin
   Result := Self.Query([]);
 end;
 
-function TQueryBD.Query(params: array of Variant): Boolean;
+function TQueryBD.Query(params: TArray<Variant>): Boolean;
 var
   i: Integer;
 begin
@@ -109,7 +111,12 @@ begin
   Result := Self.ds.Eof;
 end;
 
-function TQueryBD.Execute(params: array of Variant): Integer;
+function TQueryBD.Execute: Integer;
+begin
+  Result := Self.Execute(nil);
+end;
+
+function TQueryBD.Execute(params: TArray<Variant>): Integer;
 var
   i: Integer;
 begin
@@ -126,6 +133,11 @@ end;
 procedure TQueryBD.First;
 begin
   Self.ds.First;
+end;
+
+procedure TQueryBD.SetValue(fieldName: string; value: Variant);
+begin
+  Self.ds.ParamByName(fieldName).Value := value;
 end;
 
 function TQueryBD.AsDateTime(fieldName: string): TDateTime;

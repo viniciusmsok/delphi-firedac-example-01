@@ -5,13 +5,13 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.NumberBox, Vcl.Mask,
-  AncestralForm, RegistrationForm, _Library, _Language;
+  AncestralForm, RegistrationForm, _Library, _Language, _CustomerDAO, _App;
 
 type
   TFCustomers = class(TFRegistration)
     nID: TNumberBox;
     lbID: TLabel;
-    eOficialName: TEdit;
+    eMainName: TEdit;
     lbOficialName: TLabel;
     lbFederalID: TLabel;
     lbPersonType: TLabel;
@@ -25,7 +25,7 @@ type
     procedure nIDKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cbPersonTypeChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure eOficialNameExit(Sender: TObject);
+    procedure eMainNameExit(Sender: TObject);
   private
     isPtBR: Boolean;
     captionPersonTypeNatural: string;
@@ -39,11 +39,12 @@ type
     captionLegalPersonSocialName: string;
     captionLegalPersonFederalId: string;
 
-    procedure Mode(edition: boolean; isNewRecord: boolean); overload;
     procedure InvalidFederalIDMessage;
   protected
     procedure ConfigLanguage; override;
     procedure ValidateData; override;
+    procedure Save; override;
+    procedure Mode(edition: boolean; isNewRecord: boolean); override;
   public
     class procedure Open;
   end;
@@ -58,6 +59,27 @@ var
 begin
   f := TFCustomers.Create(Application);
   f.Show;
+end;
+
+procedure TFCustomers.Save;
+var
+  dao: CustomerDAO;
+  data: Customer;
+begin
+  inherited;
+  dao := CustomerDAO.Create(App.conn);
+  try
+    data.customer_id := 0;
+    data.person_type := cbPersonType.Text;
+    data.main_name := eMainName.Text;
+    data.social_name := eSocialName.Text;
+    data.federal_id := eFederalID.Text;
+    data.email := eEmail.Text;
+
+    dao.Insert(data);    
+  finally
+    dao.Free;
+  end;
 end;
 
 procedure TFCustomers.FormCreate(Sender: TObject);
@@ -128,7 +150,7 @@ begin
   nID.Enabled := not edition;
 
   cbPersonType.Enabled := edition;
-  eOficialName.Enabled := edition;
+  eMainName.Enabled := edition;
   eSocialName.Enabled := edition;
   eFederalID.Enabled := edition;
   eEmail.Enabled := edition;
@@ -136,12 +158,16 @@ begin
   if isNewRecord then
     nID.Clear;
 
-  eOficialName.Clear;
+  eMainName.Clear;
   eSocialName.Clear;
   eEmail.Clear;
 
   cbPersonType.itemIndex := cbPersonType.Items.IndexOf(captionPersonTypeNatural);
   cbPersonTypeChange(Self);
+
+  if isNewRecord then begin
+    
+  end;
 end;
 
 procedure TFCustomers.nIDKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -184,11 +210,11 @@ end;
 procedure TFCustomers.ValidateData;
 begin
   inherited;
-  eOficialName.Text := Trim(eOficialName.Text);
+  eMainName.Text := Trim(eMainName.Text);
   Lib.Required(
     lbOficialName.Caption,
-    Length(eOficialName.Text) < 3,
-    eOficialName
+    Length(eMainName.Text) < 3,
+    eMainName
   );
 
   eSocialName.Text := Trim(eSocialName.Text);
@@ -218,13 +244,13 @@ begin
   end;
 end;
 
-procedure TFCustomers.eOficialNameExit(Sender: TObject);
+procedure TFCustomers.eMainNameExit(Sender: TObject);
 begin
   inherited;
-  eOficialName.Text := Trim(eOficialName.Text);
+  eMainName.Text := Trim(eMainName.Text);
 
   if eSocialName.Text = '' then
-    eSocialName.Text := eOficialName.Text;
+    eSocialName.Text := eMainName.Text;
 
   eSocialName.Text := Trim(eSocialName.Text);
 end;

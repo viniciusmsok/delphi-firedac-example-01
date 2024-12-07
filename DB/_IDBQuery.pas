@@ -11,17 +11,21 @@ type
     function GetDataSet: TDataSet;
 
     function Query: Boolean; overload;
-    function Query(params: array of Variant): Boolean; overload;
-    function Execute(params: array of Variant): Integer;
+    function Query(params: TArray<Variant>): Boolean; overload;
+    function Execute: Integer; overload;
+    function Execute(params: TArray<Variant>): Integer; overload;
     procedure Close;
 
+    procedure SetValue(fieldName: string; value: Variant);
     function AsDateTime(fieldName: string): TDateTime;
     function AsFloat(fieldName: string): Double;
     function AsInteger(fieldName: string): Integer;
     function AsString(fieldName: string): string;
     function AsVariant(fieldName: string): Variant;
+
     function Bof: Boolean;
     function Eof: Boolean;
+
     procedure First;
     procedure Last;
     procedure Next;

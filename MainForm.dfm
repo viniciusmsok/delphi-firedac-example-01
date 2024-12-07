@@ -3,7 +3,7 @@ object FMain: TFMain
   Top = 0
   Align = alClient
   BorderStyle = bsSingle
-  Caption = 'Example MySQL 01'
+  Caption = 'Delphi Firedac Example 01'
   ClientHeight = 441
   ClientWidth = 624
   Color = clWhite

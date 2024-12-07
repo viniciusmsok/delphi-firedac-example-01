@@ -47,7 +47,7 @@ begin
   teste := App.conn.NewQuery;
   teste.SQL.Add('SELECT * FROM INFORMATION_SCHEMA.tables');
   teste.Query;
-  ShowMessage(teste.AsString('TABLE_NAME'));
+  ShowMessage('Teste: ' + teste.AsString('TABLE_NAME'));
   teste.Close;
   teste := nil;
 end;
@@ -86,6 +86,7 @@ begin
     for i := 0 to Screen.FormCount - 1 do begin
       if (TForm(Screen.Forms[i]).FormStyle = fsMDIChild) and (TForm(Screen.Forms[i]).Left > FMain.Width) then begin
         TForm(Screen.Forms[i]).Top := 50;
+
         if FMain.Width - (TForm(Screen.Forms[i]).Width + 100) > 50 then
           TForm(Screen.Forms[i]).Left := FMain.Width - (TForm(Screen.Forms[i]).Width + 100)
         else

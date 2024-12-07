@@ -68,7 +68,7 @@ inherited FCustomers: TFCustomers
     TabOrder = 0
     OnKeyDown = nIDKeyDown
   end
-  object eOficialName: TEdit
+  object eMainName: TEdit
     Left = 0
     Top = 137
     Width = 309
@@ -76,7 +76,7 @@ inherited FCustomers: TFCustomers
     CharCase = ecUpperCase
     Enabled = False
     TabOrder = 2
-    OnExit = eOficialNameExit
+    OnExit = eMainNameExit
     OnKeyDown = OnEnterNext
   end
   object cbPersonType: TComboBox
@@ -118,7 +118,7 @@ inherited FCustomers: TFCustomers
     CharCase = ecLowerCase
     Enabled = False
     TabOrder = 6
-    OnExit = eOficialNameExit
+    OnExit = eMainNameExit
     OnKeyDown = OnEnterNext
   end
 end

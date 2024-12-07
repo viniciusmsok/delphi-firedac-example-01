@@ -28,13 +28,13 @@ type
   protected
     editing: Boolean;
     procedure ConfigLanguage; override;
-    procedure Mode(edition: Boolean; isNewRecord: Boolean);
+    procedure Mode(edition: Boolean; isNewRecord: Boolean); virtual;
     procedure ValidateData; virtual;
-    procedure Save;
-    procedure Cancel;
-    procedure Delete;
-    procedure Search;
-    procedure Logs;
+    procedure Save; virtual;
+    procedure Cancel; virtual;
+    procedure Delete; virtual;
+    procedure Search; virtual;
+    procedure Logs; virtual;
     function WantToCancelDialog: Boolean;
   public
     { Public declarations }
@@ -73,7 +73,7 @@ end;
 
 procedure TFRegistration.Save;
 begin
-  Mode(False, False);
+  //
 end;
 
 procedure TFRegistration.btSaveClick(Sender: TObject);
@@ -81,31 +81,35 @@ begin
   inherited;
   ValidateData;
   Save;
+  Mode(False, False);
 end;
 
 procedure TFRegistration.Cancel;
 begin
-  if not Self.WantToCancelDialog then
-    Exit;
-
-  Mode(False, False);
+  //
 end;
 
 procedure TFRegistration.btCancelClick(Sender: TObject);
 begin
   inherited;
   Cancel;
+
+  if not Self.WantToCancelDialog then
+    Exit;
+
+  Mode(False, False);
 end;
 
 procedure TFRegistration.Delete;
 begin
-  Mode(False, False);
+  //
 end;
 
 procedure TFRegistration.btDeleteClick(Sender: TObject);
 begin
   inherited;
   Delete;
+  Mode(False, False);
 end;
 
 procedure TFRegistration.Search;
